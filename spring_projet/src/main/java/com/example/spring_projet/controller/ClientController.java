@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import com.example.spring_projet.model.Client;
 import com.example.spring_projet.service.ClientService;
 import java.util.List;
-import com.example.spring_projet.dao.ClientDAO;
 
 import java.util.List;
 
@@ -16,7 +15,6 @@ import java.util.List;
 public class ClientController {
 
     private final ClientService clientService;
-    private final ClientDAO clientDAO = new ClientDAO();
 
     public ClientController(ClientService clientService) {
         this.clientService = clientService;
@@ -52,8 +50,9 @@ public class ClientController {
 
     @DeleteMapping("{id}")
     @Operation(summary = "Delete client", description = "Receives client's id and deletes the client")
-    public void deleteClient(@PathVariable int id) {
+    public void deleteClient(@PathVariable Long id) {
         clientService.deleteClient(id);
     }
 
 }
+
