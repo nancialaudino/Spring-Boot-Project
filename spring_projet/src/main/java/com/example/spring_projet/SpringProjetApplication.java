@@ -15,4 +15,13 @@ public class SpringProjetApplication {
 
 
 
+/*
+| Método | URL                                                                      | Observações                     |
+| ------ | ------------------------------------------------------------------------ | ------------------------------- |
+| GET    | [http://localhost:8080/clients](http://localhost:8080/clients)           | Lista todos os clientes         |
+| GET    | [http://localhost:8080/clients/{id}](http://localhost:8080/clients/{id}) | Mostra detalhes de um cliente   |
+| POST   | [http://localhost:8080/clients](http://localhost:8080/clients)           | Adiciona cliente (JSON no body) |
+| PUT    | [http://localhost:8080/clients](http://localhost:8080/clients)           | Atualiza cliente (JSON no body) |
+| DELETE | [http://localhost:8080/clients/{id}](http://localhost:8080/clients/{id}) | Remove cliente                  |
 
+ */

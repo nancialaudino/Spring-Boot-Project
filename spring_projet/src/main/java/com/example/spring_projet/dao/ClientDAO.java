@@ -17,7 +17,9 @@ public class ClientDAO {
 
     // 1. Lister tous les clients
     public List<Client> findAll() {
+
         return clients;
+
     }
 
     // 2. Trouver un client par id
@@ -38,7 +40,7 @@ public class ClientDAO {
     }
 
     // 4. Supprimer un client par id
-    public void delete(int id) {
+    public final void delete(int id) {
         clients.removeIf(c -> c.getId() == id);
     }
 

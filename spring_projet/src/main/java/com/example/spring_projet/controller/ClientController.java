@@ -1,16 +1,22 @@
 package com.example.spring_projet.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 import com.example.spring_projet.model.Client;
 import com.example.spring_projet.service.ClientService;
+import java.util.List;
+import com.example.spring_projet.dao.ClientDAO;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/clients")
+@Tag(name = "Clients", description = "Operation related to the client")
 public class ClientController {
 
     private final ClientService clientService;
+    private final ClientDAO clientDAO = new ClientDAO();
 
     public ClientController(ClientService clientService) {
         this.clientService = clientService;
@@ -30,25 +36,24 @@ public class ClientController {
                 .orElseThrow(() -> new RuntimeException("Client Not Found"));
     }
 
-   /*
-    //POST   /clients
+
     @PostMapping
-    public Client addClient (){
-        return
+    @Operation(summary = "Add a new client", description = "Receives a new client and creates a new data entry")
+    public void addClient(@RequestBody Client client) {
+        clientService.saveClient(client);
     }
 
 
-    //PUT    /clients
-
     @PutMapping
+    @Operation(summary = "Update client data", description = "Receives the client data and updates the client")
+    public void updateClient(@RequestBody Client client) {
+        clientService.saveClient(client);
+    }
 
-    //DELETE  /clients/{id}
-
-
-    @DeleteMapping
-
-
-
-     */
+    @DeleteMapping("{id}")
+    @Operation(summary = "Delete client", description = "Receives client's id and deletes the client")
+    public void deleteClient(@PathVariable int id) {
+        clientService.deleteClient(id);
+    }
 
 }
